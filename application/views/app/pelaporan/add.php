@@ -7,7 +7,7 @@
     <input type="text" id="lokasi" placeholder="Masuk data" class="input" name="lokasi" required>
 
     <label for="waktu_insiden"><b>Waktu Insiden</b></label>
-    <input type="datetime-local" value="<?= date('Y-m-d H:i:s') ?>" id="waktu_insiden" placeholder="Masuk data" class="input" name="waktu_insiden" required>
+    <input type="date" value="<?= date('Y-m-d') ?>" id="waktu_insiden" placeholder="Masuk data" class="input" name="waktu_insiden">
 
     <label for="keterangan"><b>Keterangan (Opsional)</b></label>
     <input type="text" id="keterangan" placeholder="Masuk data" class="input" name="keterangan">

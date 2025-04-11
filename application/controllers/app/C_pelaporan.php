@@ -73,7 +73,8 @@ class C_pelaporan extends CI_Controller
     {
 
         $this->check_akses(1);
-        // $this->req->print($_POST);
+
+
         $dataRequest = [
             'url'    => 'insiden',
             'data'   => [
@@ -86,6 +87,8 @@ class C_pelaporan extends CI_Controller
             ],
         ];
         $kirimData = $this->req->req_post_data($dataRequest);
+
+        // $this->req->print($kirimData);
 
 
 
@@ -156,7 +159,7 @@ class C_pelaporan extends CI_Controller
         if(json_decode($getDataBerkas)->status == 'fail'){
             $berkas = '';
         }else{
-            $berkas = json_decode($getDataBerkas)[0]->berkas;
+            $berkas = json_decode($getDataBerkas)[0];
         }
 
         
@@ -193,8 +196,11 @@ class C_pelaporan extends CI_Controller
         if (json_decode($getDataBerkas)->status == 'fail') {
             $berkas = '';
         } else {
-            $berkas = json_decode($getDataBerkas)[0]->berkas;
+            $berkas = json_decode($getDataBerkas)[0];
         }
+
+        // $this->req->print($berkas);
+
 
         $data = [
             'berkas'    => $berkas,
@@ -231,8 +237,6 @@ class C_pelaporan extends CI_Controller
 
 
 
-
-
         if (isset($_FILES['berkas']['name'])) {
             $dir = 'assets/uploads/berkas_insiden/';
 
@@ -263,10 +267,6 @@ class C_pelaporan extends CI_Controller
             ];
             $updateDataBerkas = $this->req->req_put_data($dataRequestBerkas);
         }
-
-        // $this->req->print($updateDataBerkas);
-
-
 
 
 

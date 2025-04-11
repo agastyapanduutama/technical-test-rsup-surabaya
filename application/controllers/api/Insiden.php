@@ -82,8 +82,10 @@ class Insiden extends REST_Controller
             'lokasi'                    => $this->post('lokasi'),
             'keterangan'                => $this->post('keterangan'),
             'waktu_insiden'             => $this->post('waktu_insiden'),
-            'status_insiden'             => $this->put('status_insiden'),
+            'status_insiden'            => (empty($this->post('status_insiden'))) ? '0' : $this->put('status_insiden'),
         );
+
+        // $this->req->print($data);
 
         $insert = $this->insiden->insertDataInsiden($data);
         if ($insert == true) {
@@ -117,7 +119,7 @@ class Insiden extends REST_Controller
             'lokasi'                    => $this->put('lokasi'),
             'keterangan'                => $this->put('keterangan'),
             'waktu_insiden'             => $this->put('waktu_insiden'),
-            'status_insiden'             => $this->put('status_insiden'),
+            'status_insiden'            => (empty($this->post('status_insiden'))) ? '0' : $this->put('status_insiden'),
         );
 
         $this->form_validation->set_data($data);

@@ -68,7 +68,7 @@
                         alert(data.message);
                         console.log(data);
                     }
-                    // Tampilkan data insiden lagi
+                    // Tampilkan data pelaporan lagi
                     fetch('<?= base_url('app/pelaporan/data'); ?>')
                         .then(response => response.json())
                         .then(data => {
@@ -99,6 +99,7 @@
                     console.error(response);
                 });
         }
+
 
 
     });
