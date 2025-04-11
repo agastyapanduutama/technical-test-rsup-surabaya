@@ -6,7 +6,6 @@
             <th>Username</th>
             <th>Nama User</th>
             <th>Keterangan</th>
-            <th>Link</th>
             <th>Aksi</th>
         </tr>
     </thead>
@@ -26,7 +25,6 @@
                 html += '<td>' + value.username + '</td>';
                 html += '<td>' + value.nama_user + '</td>';
                 html += '<td>' + value.keterangan + '</td>';
-                html += '<td>' + value.link + '</td>';
                 html += '<td>';
                 html += '<a href="<?= base_url('app/user/edit/'); ?>' + value.id + '">Edit</a>|';
                 html += '<a href="#" class="delete" data-id="' + value.id + '">Delete</a>';
@@ -71,7 +69,6 @@
                                 html += '<td>' + value.username + '</td>';
                                 html += '<td>' + value.nama_user + '</td>';
                                 html += '<td>' + value.keterangan + '</td>';
-                                html += '<td>' + value.link + '</td>';
                                 html += '<td>';
                                 html += '<a href="<?= base_url('app/user/edit/'); ?>' + value.id + '">Edit</a>|';
                                 html += '<a href="#" class="delete" data-id="' + value.id + '">Delete</a>';

@@ -100,7 +100,7 @@ class C_pelaporan extends CI_Controller
             $berkas = array(
                 'path'      => $dir,
                 'encrypt'   => TRUE,
-                'type'      => 'doc',
+                'type'      => 'custom',
                 'file'      => 'berkas'
             );
 
@@ -135,13 +135,14 @@ class C_pelaporan extends CI_Controller
 
     public function edit($iddata)
     {
-
         $this->check_akses(1);
         $dataRequest = [
             'url'    => 'insiden/' . $iddata,
         ];
 
         $getData = $this->req->req_get_data($dataRequest);
+
+        // $this->req->print($getData);
 
 
         $dataRequestBerkas = [
@@ -150,10 +151,18 @@ class C_pelaporan extends CI_Controller
 
         $getDataBerkas = $this->req->req_get_data($dataRequestBerkas);
 
+        // $this->req->print($getDataBerkas);
+
+        if(json_decode($getDataBerkas)->status == 'fail'){
+            $berkas = '';
+        }else{
+            $berkas = json_decode($getDataBerkas)[0]->berkas;
+        }
+
         
         $data = [
-            'berkas'    => json_decode($getDataBerkas)[0],
             'data'      => json_decode($getData)[0],
+            'berkas'    => $berkas,
             'title'     => 'Edit Pelaporan',
             'content'   => 'app/pelaporan/edit',
         ];
@@ -181,10 +190,14 @@ class C_pelaporan extends CI_Controller
         ];
 
         $getDataBerkas = $this->req->req_get_data($dataRequestBerkas);
-
+        if (json_decode($getDataBerkas)->status == 'fail') {
+            $berkas = '';
+        } else {
+            $berkas = json_decode($getDataBerkas)[0]->berkas;
+        }
 
         $data = [
-            'berkas'    => json_decode($getDataBerkas)[0],
+            'berkas'    => $berkas,
             'data'      => json_decode($getData)[0],
             'title'     => 'Edit Pelaporan',
             'content'   => 'app/pelaporan/detail',
@@ -230,7 +243,7 @@ class C_pelaporan extends CI_Controller
             $berkas = array(
                 'path'      => $dir,
                 'encrypt'   => TRUE,
-                'type'      => 'doc',
+                'type'      => 'custom',
                 'file'      => 'berkas'
             );
 
